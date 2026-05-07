@@ -367,6 +367,9 @@ footer{padding:2.25rem 3rem;display:flex;justify-content:space-between;align-ite
 
 @media(max-width:768px){
   nav{padding:1rem 1.25rem}
+  nav .nav-logo{font-size:0.9rem}
+
+  /* Home hero */
   .hero{grid-template-columns:1fr;padding:5rem 1.25rem 3rem!important;min-height:auto}
   .hero-right{display:none}
   .hero-name{white-space:normal;font-size:clamp(2.8rem,11vw,4.5rem)!important}
@@ -377,6 +380,8 @@ footer{padding:2.25rem 3rem;display:flex;justify-content:space-between;align-ite
   .garten{padding:3.5rem 1.25rem;grid-template-columns:1fr;gap:2.5rem}
   .garten-pill:nth-child(2),.garten-pill:nth-child(3){margin-left:0}
   footer{padding:1.5rem 1.25rem;flex-direction:column;gap:1rem}
+
+  /* Case study shared */
   .cs-hero{padding:3rem 1.25rem 2.5rem;grid-template-columns:1fr;gap:2rem}
   .cs-content{padding:0 1.25rem}
   .cs-section{padding:3rem 0}
@@ -391,6 +396,22 @@ footer{padding:2.25rem 3rem;display:flex;justify-content:space-between;align-ite
   .charge-strip{grid-template-columns:repeat(3,1fr)}
   .cs-highlight{padding:2rem 1.25rem}
   .cs-next{padding:3rem 1.25rem;flex-direction:column;gap:1.5rem;align-items:flex-start}
+
+  /* Stages & mock devices */
+  .stage{padding:2rem 1.25rem;min-height:auto}
+  .mock-laptop{width:100%!important;max-width:100%}
+  .mock-watch{width:160px!important}
+  .stage.laptop-single .mock-laptop{width:100%!important}
+  .stage.laptop-hero .mock-laptop{width:100%!important}
+
+  /* Images */
+  .cs-hero-mock img{max-width:100%!important;width:100%!important;height:auto!important}
+  img{max-width:100%}
+
+  /* Gizmo hub images */
+  .fade-up[style*="hub1"]{flex-direction:column}
+
+  /* About */
   .about-hero{grid-template-columns:1fr;padding:5rem 1.25rem 3rem;min-height:auto}
   .about-photo{display:none}
   .about-content{padding:0 1.25rem}
