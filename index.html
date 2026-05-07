@@ -1004,12 +1004,46 @@ document.querySelectorAll('a, button, .case-card, .cs-screen, .charge-frame').fo
   el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
 });
 
-// Page switcher
+
+// Password protection
+const PROTECTED = ['pfizer', 'marq'];
+const PASSWORD = 'stejada2026';
+
 function showPage(id) {
+  if (PROTECTED.includes(id) && sessionStorage.getItem('auth') !== 'yes') {
+    showPasswordModal(id);
+    return;
+  }
+  _showPage(id);
+}
+
+function showPasswordModal(targetId) {
+  document.getElementById('pw-modal').style.display = 'flex';
+  document.getElementById('pw-input').value = '';
+  document.getElementById('pw-error').style.display = 'none';
+  document.getElementById('pw-input').focus();
+  document.getElementById('pw-submit').onclick = function() {
+    if (document.getElementById('pw-input').value === PASSWORD) {
+      sessionStorage.setItem('auth', 'yes');
+      document.getElementById('pw-modal').style.display = 'none';
+      _showPage(targetId);
+    } else {
+      document.getElementById('pw-error').style.display = 'block';
+    }
+  };
+  document.getElementById('pw-input').onkeydown = function(e) {
+    if (e.key === 'Enter') document.getElementById('pw-submit').click();
+  };
+  document.getElementById('pw-cancel').onclick = function() {
+    document.getElementById('pw-modal').style.display = 'none';
+  };
+}
+
+// Rename original showPage to _showPage
+function _showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   window.scrollTo(0, 0);
-  // Re-trigger fade-up animations for the new page
   const obs = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
@@ -1029,5 +1063,21 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('#page-home .fade-up').forEach(el => obs.observe(el));
 </script>
+
+<!-- Password Modal -->
+<div id="pw-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(26,23,20,0.7);backdrop-filter:blur(8px);align-items:center;justify-content:center">
+  <div style="background:var(--cream);padding:3rem;max-width:420px;width:90%;border-radius:4px;display:flex;flex-direction:column;gap:1.5rem">
+    <div>
+      <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">Protected Case Study</div>
+      <h2 style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:300;letter-spacing:-0.02em;line-height:1.1">Enter password<br><em style="font-style:italic;color:var(--accent)">to continue</em></h2>
+    </div>
+    <input id="pw-input" type="password" placeholder="Password" style="border:1px solid var(--cream-dark);background:var(--cream);padding:0.9rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--ink);border-radius:2px;outline:none;width:100%;box-sizing:border-box">
+    <div id="pw-error" style="display:none;font-size:0.8rem;color:var(--accent)">Incorrect password — try again.</div>
+    <div style="display:flex;gap:1rem">
+      <button id="pw-submit" style="flex:1;background:var(--ink);color:var(--cream);border:none;padding:0.9rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px">Enter</button>
+      <button id="pw-cancel" style="background:none;border:1px solid var(--cream-dark);color:var(--ink);padding:0.9rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px">Cancel</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
