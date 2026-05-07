@@ -1011,7 +1011,7 @@ const PROTECTED = ['pfizer', 'marq'];
 const PASSWORD = 'stejada2026';
 
 function showPage(id) {
-  if (PROTECTED.includes(id) && sessionStorage.getItem('auth') !== 'yes') {
+  if (PROTECTED.includes(id)) {
     showPasswordModal(id);
     return;
   }
@@ -1025,8 +1025,7 @@ function showPasswordModal(targetId) {
   document.getElementById('pw-input').focus();
   document.getElementById('pw-submit').onclick = function() {
     if (document.getElementById('pw-input').value === PASSWORD) {
-      sessionStorage.setItem('auth', 'yes');
-      document.getElementById('pw-modal').style.display = 'none';
+        document.getElementById('pw-modal').style.display = 'none';
       _showPage(targetId);
     } else {
       document.getElementById('pw-error').style.display = 'block';
