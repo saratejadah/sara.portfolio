@@ -364,6 +364,40 @@ footer{padding:2.25rem 3rem;display:flex;justify-content:space-between;align-ite
 .about-contact-stat-num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:300;color:var(--ink);letter-spacing:-0.02em;line-height:1}
 .about-contact-stat-num em{font-style:italic;color:var(--accent)}
 .about-contact-stat-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:0.4rem}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}
+  .hero{grid-template-columns:1fr;padding:5rem 1.25rem 3rem!important;min-height:auto}
+  .hero-right{display:none}
+  .hero-name{white-space:normal;font-size:clamp(2.8rem,11vw,4.5rem)!important}
+  .hero-tagline{white-space:normal}
+  .work-section{padding:4rem 1.25rem}
+  .cases-grid{grid-template-columns:1fr}
+  .case-wide{grid-column:auto}
+  .garten{padding:3.5rem 1.25rem;grid-template-columns:1fr;gap:2.5rem}
+  .garten-pill:nth-child(2),.garten-pill:nth-child(3){margin-left:0}
+  footer{padding:1.5rem 1.25rem;flex-direction:column;gap:1rem}
+  .cs-hero{padding:3rem 1.25rem 2.5rem;grid-template-columns:1fr;gap:2rem}
+  .cs-content{padding:0 1.25rem}
+  .cs-section{padding:3rem 0}
+  .cs-two-col{grid-template-columns:1fr;gap:2rem}
+  .cs-three-col{grid-template-columns:1fr}
+  .cs-screen-grid{grid-template-columns:1fr}
+  .cs-screen-grid.three{grid-template-columns:1fr 1fr}
+  .cs-outcomes{grid-template-columns:1fr 1fr}
+  .findings-grid{grid-template-columns:1fr}
+  .tension-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr 1fr}
+  .charge-strip{grid-template-columns:repeat(3,1fr)}
+  .cs-highlight{padding:2rem 1.25rem}
+  .cs-next{padding:3rem 1.25rem;flex-direction:column;gap:1.5rem;align-items:flex-start}
+  .about-hero{grid-template-columns:1fr;padding:5rem 1.25rem 3rem;min-height:auto}
+  .about-photo{display:none}
+  .about-content{padding:0 1.25rem}
+  .garten-about{padding:3.5rem 1.25rem;grid-template-columns:1fr;gap:2.5rem}
+  .about-contact{padding:3rem 1.25rem;grid-template-columns:1fr;gap:2.5rem}
+  .about-contact-right{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body style="font-family: Inter">
