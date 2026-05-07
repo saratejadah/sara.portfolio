@@ -383,7 +383,8 @@ footer{padding:2.25rem 3rem;display:flex;justify-content:space-between;align-ite
 
 @media(max-width:768px){
   nav{padding:1rem 1.25rem}
-  nav .nav-logo{font-size:0.9rem}
+  .nav-logo{font-size:0!important}
+  .nav-logo::after{content:'ST';font-size:1rem;font-family:'Fraunces',serif;color:var(--ink);letter-spacing:-0.02em}
 
   /* Home hero */
   .hero{grid-template-columns:1fr;padding:5rem 1.25rem 3rem!important;min-height:auto}
